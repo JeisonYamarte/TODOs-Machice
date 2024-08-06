@@ -1,4 +1,6 @@
+import './app.css'
 import React from 'react';
+import {TodoView} from './TodoView'
 import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
@@ -18,18 +20,9 @@ function App() {
     <>
 
       <TodoCounter completed={16} total={25} />
-      <TodoSearch />
-
-      <TodoList>
-        {defaultTodos.map(todo => (
-          <TodoItem 
-          key={todo.text} 
-          text={todo.text} 
-          completed={todo.completed} />
-        ))}
-      </TodoList>
-
-      <AddTodo />
+      
+      <TodoView />
+      
     </>
   );
 }

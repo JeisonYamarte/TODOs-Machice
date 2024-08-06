@@ -1,6 +1,24 @@
-h1{
-    font-size: 24px;
+.header{
+    background-color: #FEF7FF;
+    width: 360px;
+    height: 50px;
+    display: flex;
+    font-size: 14px;
     text-align: center;
-    margin: 0;
-    padding: 48px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.header-icon{
+    width: 55px;
+    height: 56px;
+}
+
+.header-text{
+    font-weight: bold;
+    width: 125px;
+    height: auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
