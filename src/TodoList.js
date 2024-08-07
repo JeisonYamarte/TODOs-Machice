@@ -1,4 +1,5 @@
 import { TodoSearch } from "./TodoSearch";
+import './TodoList.css'
 
 function TodoList ({children}){
     return (
