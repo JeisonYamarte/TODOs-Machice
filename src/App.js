@@ -2,7 +2,6 @@ import './app.css'
 import React from 'react';
 import {TodoView} from './TodoView'
 import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { AddTodo } from './AddTodo';
@@ -22,6 +21,14 @@ function App() {
       <TodoCounter completed={16} total={25} />
       
       <TodoView />
+
+      <span className='app-img'>
+        <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>
+      </span>
+
+      <TodoList>
+        <TodoItem  />
+      </TodoList>
       
     </>
   );

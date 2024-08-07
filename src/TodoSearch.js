@@ -1,7 +1,7 @@
 
 function TodoSearch (){
     return (
-      <input placeholder="Cortarme el pelo" />
+      <input className="list-search" placeholder="Cortarme el pelo" />
     );
   }
 

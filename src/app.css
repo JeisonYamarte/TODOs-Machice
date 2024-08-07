@@ -4,3 +4,9 @@
     padding: 0;
 }
 
+.app-img img{
+    margin: 0 auto;
+    width: 305px;
+    height: 316px;
+    display: block;
+}
