@@ -22,3 +22,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.header button{
+    background-color: #FEF7FF;
+    border: none;
+    transform: rotate(0);
+    transition: .3s ease;
+}
+
+.header button:hover{
+    transform: rotate(224deg);
+}

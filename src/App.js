@@ -7,11 +7,11 @@ import { TodoItem } from './TodoItem';
 import { AddTodo } from './AddTodo';
 
 const defaultTodos = [
-  {text :"Cortar carne", completed : false},
-  {text : "pintar la casa", completed: false},
-  {text : "comprar agua", completed: false},
-  {text : "terminar el curso de react", completed: false},
-  {text : "bañar a los gatos", completed: false},
+  {text :"Cortar carne", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed : false},
+  {text : "pintar la casa", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: true},
+  {text : "comprar agua", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: true},
+  {text : "terminar el curso de react", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: false},
+  {text : "bañar a los gatos", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: false},
 ]
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
       <TodoCounter completed={16} total={25} />
       
-      <TodoView />
+      <TodoView text={defaultTodos[2].text} description={defaultTodos[2].description} completed={defaultTodos[2].completed}/>
 
       <span className='app-img'>
         <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>
