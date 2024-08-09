@@ -9,6 +9,10 @@
     padding: 30px;
 }
 
+.list-menu-lateral--active{
+    display: flex;
+}
+
 .list-search{
     padding: 5px;
     width: 257px;
@@ -29,6 +33,7 @@
     display: flex;
     width: 257px;
     height: 36px;
+    border: none;
     border-radius: 8px;
     background-color: #ffffff;
     font-weight: 500;
