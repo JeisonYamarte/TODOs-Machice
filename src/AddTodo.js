@@ -1,11 +1,13 @@
 import './AddTodo.css'
 
-function AddTodo (){
+function AddTodo ({addActive}){
     return (
-      <div className="add-container">
+      <div className={`add-container ${addActive && "add-container--active"}`}>
         <h1 className="add-title">write your new TODO</h1>
 
-        <input className="add-input" placeholder="Comprar una maquina para cortar pelo" />
+        <input className="add-input" placeholder="Tarea" />
+        <input className="add-input-d" placeholder="Descripcion" />
+
 
         <div className="add-buttons">
           <button className="add-button  add-cancel">Cancel</button>

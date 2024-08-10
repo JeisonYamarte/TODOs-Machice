@@ -1,9 +1,12 @@
-function TodoItem ({ text, completed}){
+function TodoItem ({todoSelect, setViewSelect, active, setActive}){
     return (
       <li >
-        <button className="list-item">
+        <button className="list-item" onClick={()=>{
+          setViewSelect(todoSelect);
+          setActive(!active);
+        }}>
         <span><img src="https://i.postimg.cc/cL5pL4yY/Icon.png"></img></span>
-        <p>{text}</p>
+        <p>{todoSelect.text}</p>
         </button>
       </li>
     );

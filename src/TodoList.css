@@ -11,6 +11,7 @@
 
 .list-menu-lateral--active{
     display: flex;
+    flex-direction: column;
 }
 
 .list-search{

@@ -18,40 +18,49 @@ const defaultTodos = [
 function App() {
   const [todos, setTodos] = React.useState(defaultTodos);
   const [searchValue, setSearchValue] = React.useState('');
+  const [viewSelect, setViewSelect] = React.useState(null);
   const [lateralActive, setLateralActive] = React.useState(false);
+  const [newTodoActive, setNewTodoActive] = React.useState(false);
 
   console.log("en el buscador: " + searchValue);
 
-  const searchfilter = todos.filter(todo => todo.text === searchValue);
+  const searchfilter = todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLocaleLowerCase()));
 
   const todosCompleted=todos.filter(todo => !!todo.completed).length;
   const todosTotal=todos.length;
 
-  console.log(searchfilter);
-  console.log(todosCompleted)
+ 
   
   return (
     <>
 
-      <TodoCounter completed={todosCompleted} total={todosTotal} active={lateralActive} setActive={setLateralActive}/>
+      <TodoCounter 
+        completed={todosCompleted} total={todosTotal} 
+        active={lateralActive} setActive={setLateralActive}
+        addActive={newTodoActive} setAddActive={setNewTodoActive}
+      />
       
-      <TodoView text={defaultTodos[2].text} description={defaultTodos[2].description} completed={defaultTodos[2].completed}/>
+      <TodoView todo={viewSelect}/>
 
       <span className='app-img'>
         <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>
       </span>
 
-      <TodoList searchValue={searchValue} setSearchValue={setSearchValue} active={lateralActive}>
+      <TodoList 
+        searchValue={searchValue} setSearchValue={setSearchValue} 
+        active={lateralActive}
+      >
       {searchfilter.map(todo => (
           <TodoItem 
           key={todo.text} 
-          text={todo.text} 
-          completed={todo.completed} />
+          todoSelect={todo} 
+          setViewSelect={setViewSelect}
+          active={lateralActive} setActive={setLateralActive}/>
         ))}
       </TodoList>
       
 
-      <AddTodo />
+      <AddTodo addActive={newTodoActive} />
     </>
   );
 }

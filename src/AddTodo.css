@@ -12,6 +12,10 @@
     padding: 30px;
 }
 
+.add-container--active{
+    display: flex;
+}
+
 .add-title{
     width: 60%;
     height: 48px;
@@ -25,7 +29,7 @@
 .add-input{
     padding: 15px;
     width: 247px;
-    height: 112px;
+    height: 30px;
     border-radius: 2px;
     border: 1px solid #1e1e1e;
     color: #a5a5a5;
@@ -33,6 +37,20 @@
     text-align: center;
     margin-bottom: 15px;
 }
+
+.add-input-d{
+    padding: 15px;
+    width: 247px;
+    height: 80px;
+    border-radius: 2px;
+    border: 1px solid #1e1e1e;
+    color: #a5a5a5;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
 
 .add-buttons{
     display: flex;

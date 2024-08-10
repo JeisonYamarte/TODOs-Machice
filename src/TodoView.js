@@ -1,15 +1,15 @@
 import './TodoView.css'
 
-function TodoView (props){
-    if (props.text != null) {
+function TodoView ({todo}){
+    if (todo != null) {
             return(
                 <div className='view-container-true'>
                     <div>
-                        <h2 className={`view-title-true ${props.completed && "view-through"}`}>{props.text}</h2>
-                        <p className={`view-description ${props.completed && "view-through"}`}>{props.description}</p>
+                        <h2 className={`view-title-true ${todo.completed && "view-through"}`}>{todo.text}</h2>
+                        <p className={`view-description ${todo.completed && "view-through"}`}>{todo.description}</p>
                     </div>
                     <div className='view-buttons'>
-                        <button className={`view-button-true ${props.completed && "view-button--active"}`}>✓</button>
+                        <button className={`view-button-true ${todo.completed && "view-button--active"}`}>✓</button>
                         <button className='view-button-true view-button--hover'>X</button>
                 </div>
             </div>
