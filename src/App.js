@@ -29,6 +29,24 @@ function App() {
   const todosCompleted=todos.filter(todo => !!todo.completed).length;
   const todosTotal=todos.length;
 
+ const completeTodo = (text) =>{
+  const newTodos = [...todos]
+  const todoIndex = newTodos.findIndex(
+    (todo) => todo.text == text
+  );
+  newTodos[todoIndex].completed = true;
+  setTodos(newTodos);
+ };
+
+ const deleteTodo = (text) =>{
+  const newTodos = [...todos]
+  const todoIndex = newTodos.findIndex(
+    (todo) => todo.text == text
+  );
+  newTodos.splice(todoIndex,1);
+  setTodos(newTodos);
+  setViewSelect(null)
+ };
  
   
   return (
@@ -40,7 +58,10 @@ function App() {
         addActive={newTodoActive} setAddActive={setNewTodoActive}
       />
       
-      <TodoView todo={viewSelect}/>
+      <TodoView 
+        onComplete={()=>{completeTodo(viewSelect.text)}}
+        onDelete={()=>{deleteTodo(viewSelect.text)}}
+        todo={viewSelect}/>
 
       <span className='app-img'>
         <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>

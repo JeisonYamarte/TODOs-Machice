@@ -71,6 +71,11 @@
     margin: 0 5px;   
 }
 
+.view-button-true .icon{
+    width: 40px;
+    height: 40px;
+}
+
 .view-through{
     text-decoration: line-through;
 }
