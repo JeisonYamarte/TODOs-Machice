@@ -6,17 +6,22 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { AddTodo } from './AddTodo';
 
-const defaultTodos = [
-  {text :"Cortar carne", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed : true},
-  {text : "pintar la casa", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: true},
-  {text : "comprar agua", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: false},
-  {text : "terminar el curso de react", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: false},
-  {text : "bañar a los gatos", description: "debo ir al mercador, ver las carnes que hay, cuales me hacen falta", completed: true
-  },
-]
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+  let parsedTodos;
+
+  if(!localStorageTodos){
+    localStorage.setItem('TODOS_V1',JSON.stringify([]));
+    parsedTodos = [];
+  } else{
+    parsedTodos = JSON.parse(localStorageTodos)
+  }
+
+
+
+  const [todos, setTodos] = React.useState(parsedTodos);
   const [searchValue, setSearchValue] = React.useState('');
   const [viewSelect, setViewSelect] = React.useState(null);
   const [lateralActive, setLateralActive] = React.useState(false);
@@ -29,24 +34,30 @@ function App() {
   const todosCompleted=todos.filter(todo => !!todo.completed).length;
   const todosTotal=todos.length;
 
- const completeTodo = (text) =>{
-  const newTodos = [...todos]
-  const todoIndex = newTodos.findIndex(
-    (todo) => todo.text == text
-  );
-  newTodos[todoIndex].completed = true;
-  setTodos(newTodos);
- };
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
 
- const deleteTodo = (text) =>{
-  const newTodos = [...todos]
-  const todoIndex = newTodos.findIndex(
-    (todo) => todo.text == text
-  );
-  newTodos.splice(todoIndex,1);
-  setTodos(newTodos);
-  setViewSelect(null)
- };
+    setTodos(newTodos);
+  }
+
+  const completeTodo = (text) =>{
+    const newTodos = [...todos]
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos[todoIndex].completed = true;
+    saveTodos(newTodos);
+    };
+
+  const deleteTodo = (text) =>{
+    const newTodos = [...todos]
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos.splice(todoIndex,1);
+    saveTodos(newTodos);
+    setViewSelect(null)
+  };
  
   
   return (

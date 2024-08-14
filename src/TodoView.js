@@ -11,11 +11,11 @@ function TodoView (props){
                         <p className={`view-description ${props.todo.completed && "view-through"}`}>{props.todo.description}</p>
                     </div>
                     <div className='view-buttons'>
-                        <button onClick={props.onComplete} className={`view-button-true ${props.todo.completed && "view-button--active"}`}>
-                            <BsCheck className='icon' />
+                        <button onClick={props.onComplete} className={`view-button-true`}>
+                            <BsCheck className={`icon-check ${props.todo.completed && "icon--active"} `}  />
                         </button>
                         <button onClick={props.onDelete} className='view-button-true view-button--hover'>
-                            <BsX className='icon'/>
+                            <BsX className='icon-delete icon--hover'  />
                         </button>
                 </div>
             </div>
