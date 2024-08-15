@@ -5,7 +5,12 @@ import { useLocalStorage } from './localStorage';
 
 function App() {
   
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos, 
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   const [viewSelect, setViewSelect] = React.useState(null);
   const [lateralActive, setLateralActive] = React.useState(false);
@@ -41,6 +46,8 @@ function App() {
   
   return (
     <AppUI 
+    loading={loading}
+    error={error}
     todosCompleted={todosCompleted}
     todosTotal={todosTotal}
     lateralActive={lateralActive}

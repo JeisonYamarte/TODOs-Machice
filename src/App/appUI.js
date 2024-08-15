@@ -3,9 +3,14 @@ import { TodoCounter } from '../TodoCounter';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { AddTodo } from '../AddTodo';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { EmptyTodos } from '../EmptyTodos';
 
 function AppUI (
     {
+        loading,
+        error,
         todosCompleted,
         todosTotal,
         lateralActive,
@@ -43,12 +48,16 @@ function AppUI (
         searchValue={searchValue} setSearchValue={setSearchValue} 
         active={lateralActive}
       >
-      {searchfilter.map(todo => (
-          <TodoItem 
-          key={todo.text} 
-          todoSelect={todo} 
-          setViewSelect={setViewSelect}
-          active={lateralActive} setActive={setLateralActive}/>
+        {loading && <TodosLoading />}
+        {error && <TodosError />}
+        {(!loading && searchfilter.lenght == 0) && <EmptyTodos />}
+      
+        {searchfilter.map(todo => (
+            <TodoItem 
+            key={todo.text} 
+            todoSelect={todo} 
+            setViewSelect={setViewSelect}
+            active={lateralActive} setActive={setLateralActive}/>
         ))}
       </TodoList>
       
