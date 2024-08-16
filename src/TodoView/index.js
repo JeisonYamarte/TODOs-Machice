@@ -1,20 +1,30 @@
 import './TodoView.css'
+import React from 'react';
 import { BsCheck } from "react-icons/bs";
 import { BsX } from "react-icons/bs";
+import { TodoContext } from '../TodoContext';
 
-function TodoView (props){
-    if (props.todo != null) {
+
+
+function TodoView (){
+    const { 
+        completeTodo,
+        deleteTodo,
+        viewSelect, 
+    } = React.useContext(TodoContext);
+
+    if (viewSelect != null) {
             return(
                 <div className='view-container-true'>
                     <div>
-                        <h2 className={`view-title-true ${props.todo.completed && "view-through"}`}>{props.todo.text}</h2>
-                        <p className={`view-description ${props.todo.completed && "view-through"}`}>{props.todo.description}</p>
+                        <h2 className={`view-title-true ${viewSelect.completed && "view-through"}`}>{viewSelect.text}</h2>
+                        <p className={`view-description ${viewSelect.completed && "view-through"}`}>{viewSelect.description}</p>
                     </div>
                     <div className='view-buttons'>
-                        <button onClick={props.onComplete} className={`view-button-true`}>
-                            <BsCheck className={`icon-check ${props.todo.completed && "icon--active"} `}  />
+                        <button onClick={completeTodo} className={`view-button-true`}>
+                            <BsCheck className={`icon-check ${viewSelect.completed && "icon--active"} `}  />
                         </button>
-                        <button onClick={props.onDelete} className='view-button-true view-button--hover'>
+                        <button onClick={deleteTodo} className='view-button-true view-button--hover'>
                             <BsX className='icon-delete icon--hover'  />
                         </button>
                 </div>

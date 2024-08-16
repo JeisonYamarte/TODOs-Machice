@@ -1,8 +1,14 @@
+import React from 'react';
 import './AddTodo.css'
+import { TodoContext } from '../TodoContext';
 
-function AddTodo ({addActive}){
+
+function AddTodo (){
+  const { 
+    newTodoActive,
+   } = React.useContext(TodoContext);
     return (
-      <div className={`add-container ${addActive && "add-container--active"}`}>
+      <div className={`add-container ${newTodoActive && "add-container--active"}`}>
         <h1 className="add-title">write your new TODO</h1>
 
         <input className="add-input" placeholder="Tarea" />
