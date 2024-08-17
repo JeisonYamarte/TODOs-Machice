@@ -6,22 +6,33 @@ import { TodoContext } from '../TodoContext';
 function AddTodo (){
   const { 
     newTodoActive,
+    setNewTodoActive,
    } = React.useContext(TodoContext);
     return (
-      <div className={`add-container ${newTodoActive && "add-container--active"}`}>
+      <form onClick={(Event)=>{
+        Event.preventDefault();
+      }} className={`add-container`}>
         <h1 className="add-title">write your new TODO</h1>
 
         <input className="add-input" placeholder="Tarea" />
-        <input className="add-input-d" placeholder="Descripcion" />
+        <textarea className="add-input-d" placeholder="Descripcion" />
 
 
         <div className="add-buttons">
-          <button className="add-button  add-cancel">Cancel</button>
-          <button className="add-button add-anadir">Añadir</button>
+          <button 
+          onClick={()=>{
+            setNewTodoActive(!newTodoActive)
+          }}
+          className="add-button  add-cancel"
+          >Cancel</button>
+          <button 
+          type='submit'
+          className="add-button add-anadir"
+          >Añadir</button>
 
         </div>
 
-      </div>
+      </form>
     );
   }
 

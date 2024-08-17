@@ -1,5 +1,6 @@
 .list-menu-lateral{
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 0;
     left: 0;
@@ -7,12 +8,9 @@
     height: 750px;
     background-color: #f2f4f5;
     padding: 30px;
+    box-shadow: 60px 0px 0px rgba(32, 35, 41, .8);
 }
 
-.list-menu-lateral--active{
-    display: flex;
-    flex-direction: column;
-}
 
 .list-search{
     padding: 5px;

@@ -7,6 +7,7 @@ import { AddTodo } from '../AddTodo';
 import { TodosLoading } from '../TodosLoading';
 import { TodosError } from '../TodosError';
 import { EmptyTodos } from '../EmptyTodos';
+import { Modal } from '../Modal';
 import { TodoContext } from '../TodoContext';
 
 function AppUI (){
@@ -14,6 +15,8 @@ function AppUI (){
     loading,
     error,
     searchfilter,
+    lateralActive,
+    newTodoActive,
   } = React.useContext(TodoContext);
     return(
       <>
@@ -25,7 +28,7 @@ function AppUI (){
         <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>
       </span>
 
-      <TodoList >
+      {lateralActive && <TodoList >
         {loading && <TodosLoading />}
         {error && <TodosError />}
         {(!loading && searchfilter.lenght == 0) && <EmptyTodos />}
@@ -36,10 +39,12 @@ function AppUI (){
             todoSelect={todo} 
           />
         ))}
-      </TodoList>
+      </TodoList>}
       
-
-      <AddTodo />
+      {newTodoActive && <Modal>
+        <AddTodo />
+      </Modal>}
+      
     </>
 
     )
