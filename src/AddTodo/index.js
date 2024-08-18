@@ -5,26 +5,49 @@ import { TodoContext } from '../TodoContext';
 
 function AddTodo (){
   const { 
-    newTodoActive,
+    aggTodo,
     setNewTodoActive,
    } = React.useContext(TodoContext);
-    return (
-      <form onClick={(Event)=>{
-        Event.preventDefault();
-      }} className={`add-container`}>
-        <h1 className="add-title">write your new TODO</h1>
+   const [todo, setTodo] = React.useState({text: '', descrption: ''})
 
-        <input className="add-input" placeholder="Tarea" />
-        <textarea className="add-input-d" placeholder="Descripcion" />
+   const onSubmit = (event) =>{
+      event.preventDefault();
+      aggTodo(todo);
+      setNewTodoActive(false);
+   }
+
+   const onChangeD = (event) =>{
+    setTodo({text: todo.text, description: event.target.value});
+   }
+
+   const onChangeT = (event) =>{
+    setTodo({text: event.target.value, description: todo.descrption});
+   }
+
+
+    return (
+      <form onSubmit={onSubmit} className={`add-container`}>
+        <h1 className="add-title">Escribe el nuevo TODO</h1>
+
+        <input 
+          value={todo.text} 
+          onChange={onChangeT}
+          className="add-input" 
+          placeholder="Tarea" />
+        <textarea 
+          value={todo.descrption} 
+          onChange={onChangeD}
+          className="add-input-d" 
+          placeholder="Descripcion" />
 
 
         <div className="add-buttons">
           <button 
           onClick={()=>{
-            setNewTodoActive(!newTodoActive)
+            setNewTodoActive(false)
           }}
           className="add-button  add-cancel"
-          >Cancel</button>
+          >Cancelar</button>
           <button 
           type='submit'
           className="add-button add-anadir"

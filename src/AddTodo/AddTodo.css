@@ -38,6 +38,7 @@
 }
 
 .add-input-d{
+    resize: none;
     padding: 15px;
     width: 247px;
     height: 80px;

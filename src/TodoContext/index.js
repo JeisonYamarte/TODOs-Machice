@@ -23,21 +23,37 @@ function TodoProvider({children}) {
   const todosCompleted=todos.filter(todo => !!todo.completed).length;
   const todosTotal=todos.length;
 
-  
-
-  const completeTodo = (text) =>{
+  const aggTodo = (todo) => {
     const newTodos = [...todos]
+    const temp ={
+      text: todo.text,
+      description: todo.description,
+      completed: false,
+    }
+    newTodos.push(temp);
+    setViewSelect(temp)
+    
+    saveTodos(newTodos);
+  }
+
+  const completeTodo = () =>{
+    let newTodos = [...todos]
+   
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text === viewSelect.text
     );
-    newTodos[todoIndex].completed = true;
+    console.log(newTodos.length);
+    
+    console.log(todoIndex);
+    
+    newTodos[todoIndex].completed=true;
     saveTodos(newTodos);
   };
 
-  const deleteTodo = (text) =>{
+  const deleteTodo = () =>{
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
+      (todo) => todo.text == viewSelect.text
     );
     newTodos.splice(todoIndex,1);
     saveTodos(newTodos);
@@ -62,6 +78,7 @@ function TodoProvider({children}) {
         searchfilter,
         deleteTodo,
         completeTodo,
+        aggTodo,
     }}>
         {children}
     </TodoContext.Provider>
