@@ -33,12 +33,14 @@ function AddTodo (){
           value={todo.text} 
           onChange={onChangeT}
           className="add-input" 
-          placeholder="Tarea" />
+          placeholder="Tarea"
+          required />
         <textarea 
           value={todo.descrption} 
           onChange={onChangeD}
           className="add-input-d" 
-          placeholder="Descripcion" />
+          placeholder="Descripcion"
+          required />
 
 
         <div className="add-buttons">

@@ -29,5 +29,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "homepage": "//wsl.localhost/Ubuntu/home/jeison/developer/curso-react-intro/build/",
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }

@@ -10,8 +10,8 @@
 }
 
 .header-icon{
-    width: 55px;
-    height: 56px;
+    width: 35px;
+    height: 30px;
 }
 
 .header-text{
@@ -24,7 +24,7 @@
 }
 
 .header button{
-    background-color: #FEF7FF;
+    background-color: transparent;
     border: none;
     transform: rotate(0);
     transition: .3s ease;

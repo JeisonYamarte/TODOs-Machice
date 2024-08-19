@@ -1,5 +1,6 @@
 import React from "react";
 import { TodoContext } from '../TodoContext';
+import { BsStars } from "react-icons/bs";
 
 
 function TodoItem ({todoSelect}){
@@ -15,7 +16,7 @@ function TodoItem ({todoSelect}){
           setViewSelect(todoSelect);
           setLateralActive(!lateralActive);
         }}>
-        <span><img src="https://i.postimg.cc/cL5pL4yY/Icon.png"></img></span>
+        <span><BsStars className="item-icon" /></span>
         <p>{todoSelect.text}</p>
         </button>
       </li>

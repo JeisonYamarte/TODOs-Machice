@@ -1,8 +1,14 @@
 import React from 'react';
 import './TodoCounter.css';
 import { TodoContext } from '../TodoContext';
+import { TiThMenuOutline } from "react-icons/ti";
+import { FaPlus } from "react-icons/fa";
+
+
+
 
 function TodoCounter (){
+
   const { 
     todosTotal,
     todosCompleted,
@@ -11,14 +17,26 @@ function TodoCounter (){
     newTodoActive, 
     setNewTodoActive
   } = React.useContext(TodoContext);
-  const titulo = todosCompleted == todosTotal ? "All TODOs ready" : "TODOs " + todosCompleted + "/" + todosTotal;
+
+  
+  const tituloState = () =>{
+    if(todosTotal === 0){
+      return 'No hay TODOs'
+    } else if(todosTotal === todosCompleted){
+      return 'Todos los TODOs estan listos'
+    } else{
+      return ("TODOs " + todosCompleted + "/" + todosTotal);
+    }
+  }
+
+  const titulo = tituloState();
     return (
       <header className='header'>
         <button onClick={ () => setLateralActive(!lateralActive)}>
-        <span><img className="header-icon" src='https://i.postimg.cc/7LJ31N1c/container.png'></img></span></button>
+        <TiThMenuOutline className='header-icon' /></button>
         <span className='header-text'> {titulo} </span>
         <button onClick={()=> setNewTodoActive(!newTodoActive)} >
-        <span><img className="header-icon" src='https://i.postimg.cc/13GMVSST/trailing-icon.png'></img></span></button>
+        <FaPlus className='header-icon' /></button>
 
       </header>
     );

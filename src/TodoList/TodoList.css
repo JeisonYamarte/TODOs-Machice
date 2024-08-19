@@ -11,6 +11,25 @@
     box-shadow: 60px 0px 0px rgba(32, 35, 41, .8);
 }
 
+.list-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 65px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 3px 0px 7px hsl(193, 94%, 68%, .8);
+  
+}
+
+.list-close-icon{
+    width: 20px;
+    height: 20px;
+}
 
 .list-search{
     padding: 5px;
@@ -43,7 +62,7 @@
     padding: 5px;
 }
 
-.list-item img{
+.list-item .item-icon{
     width: 16px;
     height: 15px;
     margin: 5px;
