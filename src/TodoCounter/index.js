@@ -30,6 +30,7 @@ function TodoCounter (){
   }
 
   const titulo = tituloState();
+  
     return (
       <header className='header'>
         <button onClick={ () => setLateralActive(!lateralActive)}>
