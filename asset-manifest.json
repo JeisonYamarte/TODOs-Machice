@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TODOs-Machice/static/css/main.b43bffbc.css",
+    "main.js": "/TODOs-Machice/static/js/main.d6176da6.js",
+    "index.html": "/TODOs-Machice/index.html",
+    "main.b43bffbc.css.map": "/TODOs-Machice/static/css/main.b43bffbc.css.map",
+    "main.d6176da6.js.map": "/TODOs-Machice/static/js/main.d6176da6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b43bffbc.css",
+    "static/js/main.d6176da6.js"
+  ]
+}
