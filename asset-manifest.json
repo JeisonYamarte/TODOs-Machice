@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/TODOs-Machice/static/css/main.93d79780.css",
-    "main.js": "/TODOs-Machice/static/js/main.8e4f9a94.js",
+    "main.js": "/TODOs-Machice/static/js/main.a29ba532.js",
     "index.html": "/TODOs-Machice/index.html",
     "main.93d79780.css.map": "/TODOs-Machice/static/css/main.93d79780.css.map",
-    "main.8e4f9a94.js.map": "/TODOs-Machice/static/js/main.8e4f9a94.js.map"
+    "main.a29ba532.js.map": "/TODOs-Machice/static/js/main.a29ba532.js.map"
   },
   "entrypoints": [
     "static/css/main.93d79780.css",
-    "static/js/main.8e4f9a94.js"
+    "static/js/main.a29ba532.js"
   ]
 }
