@@ -24,7 +24,7 @@ function TodoView (){
                     </div>
                     <div className='view-buttons'>
                         <button onClick={completeTodo} className={`view-button-true`}>
-                            <BsCheck className={`icon-check ${viewSelect.completed && "icon--active"} `}  />
+                            <BsCheck className={`icon-check ${viewSelect.completed && "icon--active"}`}  />
                         </button>
                         <button onClick={deleteTodo} className='view-button-true view-button--hover'>
                             <BsX className='icon-delete icon--hover'  />

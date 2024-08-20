@@ -17,7 +17,7 @@ function TodoItem ({todoSelect}){
           setLateralActive(!lateralActive);
         }}>
         <span><BsStars className="item-icon" /></span>
-        <p>{todoSelect.text}</p>
+        <p className={`${todoSelect.completed && "list-item-true"}`}>{todoSelect.text}</p>
         </button>
       </li>
     );

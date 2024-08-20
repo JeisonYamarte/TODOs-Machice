@@ -8,29 +8,15 @@ import { FaPlus } from "react-icons/fa";
 
 
 function TodoCounter (){
-
   const { 
-    todosTotal,
-    todosCompleted,
     setLateralActive, 
     lateralActive, 
     newTodoActive, 
-    setNewTodoActive
+    setNewTodoActive,
+    titulo,
   } = React.useContext(TodoContext);
 
-  
-  const tituloState = () =>{
-    if(todosTotal === 0){
-      return 'No hay TODOs'
-    } else if(todosTotal === todosCompleted){
-      return 'Todos los TODOs estan listos'
-    } else{
-      return ("TODOs " + todosCompleted + "/" + todosTotal);
-    }
-  }
 
-  const titulo = tituloState();
-  
     return (
       <header className='header'>
         <button onClick={ () => setLateralActive(!lateralActive)}>

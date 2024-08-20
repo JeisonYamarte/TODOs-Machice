@@ -12,6 +12,9 @@ function TodoProvider({children}) {
     error,
   } = useLocalStorage('TODOS_V1', []);
 
+
+
+  const [titulo, setTitulo] = React.useState('')
   const [searchValue, setSearchValue] = React.useState('');
   const [viewSelect, setViewSelect] = React.useState(null);
   const [lateralActive, setLateralActive] = React.useState(false);
@@ -19,11 +22,15 @@ function TodoProvider({children}) {
 
 
   const searchfilter = todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLocaleLowerCase()));
-
   const todosCompleted=todos.filter(todo => !!todo.completed).length;
   const todosTotal=todos.length;
+  
 
   const aggTodo = (todo) => {
+   const validar = todos.some(todoItem => todoItem.text === todo.text);
+    console.log(validar);
+     
+   if(!validar){
     const newTodos = [...todos]
     const temp ={
       text: todo.text,
@@ -34,7 +41,24 @@ function TodoProvider({children}) {
     setViewSelect(temp)
     
     saveTodos(newTodos);
+  }else{
+    setViewSelect(todos.find(todoItem => todoItem.text === todo.text));
   }
+  }
+
+
+  React.useEffect(()=>{
+    let temp;
+    if(todosTotal === 0){
+      temp = 'No hay TODOs'
+    } else if(todosTotal === todosCompleted){
+      temp = 'Todos los TODOs estan listos'
+    } else{
+      temp = "TODOs " + todosCompleted + "/" + todosTotal;
+    }
+    setTitulo(temp);
+  },[todosCompleted,todosTotal])
+  
 
   const completeTodo = () =>{
     let newTodos = [...todos]
@@ -42,12 +66,10 @@ function TodoProvider({children}) {
     const todoIndex = newTodos.findIndex(
       (todo) => todo.text === viewSelect.text
     );
-    console.log(newTodos.length);
-    
-    console.log(todoIndex);
-    
+  
     newTodos[todoIndex].completed=true;
     saveTodos(newTodos);
+    
   };
 
   const deleteTodo = () =>{
@@ -57,7 +79,11 @@ function TodoProvider({children}) {
     );
     newTodos.splice(todoIndex,1);
     saveTodos(newTodos);
-    setViewSelect(null)
+    if (todos.length > 0){
+      setViewSelect(todos[0]);
+    } else{
+      setViewSelect(null)
+    }
   };
  
 
@@ -79,6 +105,7 @@ function TodoProvider({children}) {
         deleteTodo,
         completeTodo,
         aggTodo,
+        titulo,
     }}>
         {children}
     </TodoContext.Provider>
