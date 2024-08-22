@@ -22,9 +22,13 @@ function TodoProvider({children}) {
 
 
   const searchfilter = todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLocaleLowerCase()));
-  const todosCompleted=todos.filter(todo => !!todo.completed).length;
-  const todosTotal=todos.length;
+  let todosCompleted=todos.filter(todo => !!todo.completed).length;
+  let todosTotal=todos.length;
   
+  const todoAjuste = ()=>{
+    todosCompleted=todos.filter(todo => !!todo.completed).length;
+    todosTotal=todos.length;
+  }
 
   const aggTodo = (todo) => {
    const validar = todos.some(todoItem => todoItem.text === todo.text);
@@ -69,6 +73,7 @@ function TodoProvider({children}) {
   
     newTodos[todoIndex].completed=true;
     saveTodos(newTodos);
+    todoAjuste();
     
   };
 
@@ -84,7 +89,12 @@ function TodoProvider({children}) {
     } else{
       setViewSelect(null)
     }
+    todoAjuste();
   };
+
+  if(todos != []){
+    todoAjuste();
+  }
  
 
   return (
