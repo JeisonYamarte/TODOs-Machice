@@ -16,12 +16,10 @@ function AddTodo (){
       setNewTodoActive(false);
    }
 
-   const onChangeD = (event) =>{
-    setTodo({text: todo.text, description: event.target.value});
-   }
+   
 
    const onChangeT = (event) =>{
-    setTodo({text: event.target.value, description: todo.descrption});
+    setTodo({text: event.target.value});
    }
 
 
@@ -35,13 +33,6 @@ function AddTodo (){
           className="add-input" 
           placeholder="Tarea"
           required />
-        <textarea 
-          value={todo.descrption} 
-          onChange={onChangeD}
-          className="add-input-d" 
-          placeholder="Descripcion"
-          required />
-
 
         <div className="add-buttons">
           <button 

@@ -38,7 +38,6 @@ function TodoProvider({children}) {
     const newTodos = [...todos]
     const temp ={
       text: todo.text,
-      description: todo.description,
       completed: false,
     }
     newTodos.push(temp);

@@ -2,6 +2,7 @@ import './TodoView.css'
 import React from 'react';
 import { BsCheck } from "react-icons/bs";
 import { BsX } from "react-icons/bs";
+import { BsFillPatchQuestionFill } from "react-icons/bs";
 import { TodoContext } from '../TodoContext';
 
 
@@ -18,9 +19,13 @@ function TodoView (){
     if (viewSelect != null) {
             return(
                 <div className='view-container-true'>
-                    <div>
+                    <div className='viw-container-set1'>
                         <h2 className={`view-title-true ${viewSelect.completed && "view-through"}`}>{viewSelect.text}</h2>
-                        <p className={`view-description ${viewSelect.completed && "view-through"}`}>{viewSelect.description}</p>
+                        <div className='view-IAquestion'>
+                            <button className='view-IAquestion-button'>
+                                <BsFillPatchQuestionFill className='view-IAquestion-icon' />
+                            </button>
+                        </div>
                     </div>
                     <div className='view-buttons'>
                         <button onClick={completeTodo} className={`view-button-true`}>
