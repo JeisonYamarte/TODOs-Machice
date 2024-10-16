@@ -19,6 +19,7 @@ function TodoProvider({children}) {
   const [viewSelect, setViewSelect] = React.useState(null);
   const [lateralActive, setLateralActive] = React.useState(false);
   const [newTodoActive, setNewTodoActive] = React.useState(false);
+  const [activeQuestion, setActiveQuestion] = React.useState(false);
 
 
   const searchfilter = todos.filter((todo) => todo.text.toLowerCase().includes(searchValue.toLocaleLowerCase()));
@@ -115,6 +116,8 @@ function TodoProvider({children}) {
         completeTodo,
         aggTodo,
         titulo,
+        activeQuestion,
+        setActiveQuestion,
     }}>
         {children}
     </TodoContext.Provider>

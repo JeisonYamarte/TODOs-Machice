@@ -4,6 +4,7 @@ import { BsCheck } from "react-icons/bs";
 import { BsX } from "react-icons/bs";
 import { BsFillPatchQuestionFill } from "react-icons/bs";
 import { TodoContext } from '../TodoContext';
+import { TodoQuestion } from '../TodoQuestion';
 
 
 
@@ -14,7 +15,13 @@ function TodoView (){
         viewSelect, 
         newTodoActive,
         setNewTodoActive,
+        activeQuestion,
+        setActiveQuestion,
     } = React.useContext(TodoContext);
+
+    React.useEffect(()=>{
+        setActiveQuestion(false);
+    },[viewSelect]);
 
     if (viewSelect != null) {
             return(
@@ -22,9 +29,11 @@ function TodoView (){
                     <div className='viw-container-set1'>
                         <h2 className={`view-title-true ${viewSelect.completed && "view-through"}`}>{viewSelect.text}</h2>
                         <div className='view-IAquestion'>
-                            <button className='view-IAquestion-button'>
-                                <BsFillPatchQuestionFill className='view-IAquestion-icon' />
-                            </button>
+                            {!activeQuestion ?
+                            <button onClick={()=> setActiveQuestion(true)} className='view-IAquestion-button'>
+                            <BsFillPatchQuestionFill className='view-IAquestion-icon' />
+                        </button> :
+                            <TodoQuestion />}
                         </div>
                     </div>
                     <div className='view-buttons'>
