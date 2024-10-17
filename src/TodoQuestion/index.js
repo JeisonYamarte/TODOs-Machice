@@ -1,47 +1,59 @@
 import React from 'react'
-import OpenAI from 'openai';
 import { TodoContext } from '../TodoContext'
+import { TodosLoading } from '../TodosLoading';
 
 function TodoQuestion() {
     const {
         viewSelect,
         activeQuestion,
     } = React.useContext(TodoContext);
+    const [loading, setLoading] = React.useState(true)
     const [response, setResponse] = React.useState('')
 
-    const API_KEY = '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'
+    const API_KEY = '59ATHNM9m8qUkrgj7kiBfUaYh5ifjl2a4aU6qK07'
 
     React.useEffect(()=>{
-        
+        const input = viewSelect.text;
+        console.log('input', input)
     const question = async ()=>{
         try{
-            const openai = new OpenAI({ apiKey: API_KEY, dangerouslyAllowBrowser: true });
-
-            const completion = await openai.chat.completions.create({
-                model: "gpt-4o-mini",
-                messages: [
-                    { role: "system", content: "You are a helpful assistant." },
-                    {
-                        role: "user",
-                        content: viewSelect.text,
-                    },
-                ],
+            const res = await fetch('https://api.cohere.ai/generate',{
+                method: 'POST',
+                headers: {
+                   'Authorization': `Bearer ${API_KEY}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: 'command-xlarge-nightly',
+                    prompt: `responde con un concejo corto. ${input} `,
+                    max_tokens: 20,
+                })
             });
 
+            if (!res.ok) {
+                throw new Error('Error en la solicitud');
+            }
            
-            
-            setResponse(completion.choices[0].message.content);
+            const data = await res.json();
+
+            console.log('data', data)
+            setResponse(data.text);
+            setLoading(false);
+
         } catch (error){
             console.error('Error al enviar la solicitud a OpenAI', error);
             setResponse('Error al conectar con la api');
+            setLoading(false);
         }
     };
 
     question();
     },[activeQuestion]);
 
+    const renderView = loading === true ? <TodosLoading /> : response;
+
   return (
-    <div>{response}</div>
+    <div>{renderView}</div>
   )
 }
 
