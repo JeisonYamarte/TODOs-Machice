@@ -1,4 +1,5 @@
 import React from 'react'
+import './TodoQuestion.css'
 import { TodoContext } from '../TodoContext'
 import { TodosLoading } from '../TodosLoading';
 
@@ -25,8 +26,8 @@ function TodoQuestion() {
                 },
                 body: JSON.stringify({
                     model: 'command-xlarge-nightly',
-                    prompt: `responde con un concejo corto. ${input} `,
-                    max_tokens: 20,
+                    prompt: `un pequeño dato sobre, solo el dato que sea corto. ${input} `,
+                    max_tokens: 100,
                 })
             });
 
@@ -50,10 +51,18 @@ function TodoQuestion() {
     question();
     },[activeQuestion]);
 
-    const renderView = loading === true ? <TodosLoading /> : response;
+    const renderResponse = ()=>{
+        return(
+            <p className='renderResponse'>
+                {response}
+            </p>
+        )
+    }
+
+    const renderView = loading === true ? <TodosLoading /> : renderResponse();
 
   return (
-    <div>{renderView}</div>
+    <>{renderView}</>
   )
 }
 
