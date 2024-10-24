@@ -33,3 +33,15 @@
 .header button:hover{
     transform: rotate(224deg);
 }
+
+@media (min-width: 769px) {
+    .header{
+        width: 500px;
+        padding: 0 100px;
+        border-radius: 0 0 100% 100%;
+    }
+
+    .header-icon-lateral{
+      display: none;
+    }
+  }

@@ -15,7 +15,6 @@ function AppUI (){
     loading,
     error,
     searchfilter,
-    lateralActive,
     newTodoActive,
   } = React.useContext(TodoContext);
     return(
@@ -23,23 +22,25 @@ function AppUI (){
 
       <TodoCounter/>
 
-      <TodoView  />
-      <span className='app-img'>
-        <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>
-      </span>
+      <div className='Todo-Body'>
+        <TodoView  />
+        <span className='app-img'>
+          <img src='https://i.postimg.cc/RF6zjXKm/man-with-laptop-pointing-up-removebg-preview.png'></img>
+        </span>
 
-      {lateralActive && <TodoList >
-        {loading && <TodosLoading />}
-        {error && <TodosError />}
-        {(!loading && searchfilter.lenght == 0) && <EmptyTodos />}
-          
-        {searchfilter.map(todo => (
-          <TodoItem 
-            key={todo.text} 
-            todoSelect={todo} 
-          />
-        ))}
-      </TodoList>}
+        <TodoList >
+          {loading && <TodosLoading />}
+          {error && <TodosError />}
+          {(!loading && searchfilter.lenght == 0) && <EmptyTodos />}
+            
+          {searchfilter.map(todo => (
+            <TodoItem 
+              key={todo.text} 
+              todoSelect={todo} 
+            />
+          ))}
+        </TodoList>
+      </div>
       
       {newTodoActive && <Modal>
         <AddTodo />

@@ -5,4 +5,10 @@
     border: 1px solid #000;
     overflow-y: auto; 
     white-space: normal;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.renderResponse::-webkit-scrollbar {
+    display: none; 
 }

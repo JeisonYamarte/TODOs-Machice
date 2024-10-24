@@ -4,9 +4,33 @@
     padding: 0;
 }
 
+.Todo-Body{
+    position: relative;
+    padding-top: 100px;
+    margin: 0 auto;
+    width: 375px;
+    height: max-content;
+}
+
 .app-img img{
     margin: 0 auto;
     width: 305px;
     height: 316px;
     display: block;
 }
+
+
+@media (min-width: 769px) {
+    .Todo-Body{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+       
+        gap: 100px;
+        padding: 0 auto;
+    }
+
+    .app-img{
+        display: none;
+    }
+  }

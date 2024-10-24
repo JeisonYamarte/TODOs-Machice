@@ -8,11 +8,12 @@ import { TodoContext } from "../TodoContext";
 
 function TodoList ({children}){
     const {
-      setLateralActive
+      setLateralActive,
+      lateralActive,
     } = React.useContext(TodoContext)
   
     return (
-      <div className={`list-menu-lateral`}> 
+      <div className={`list-menu-lateral ${lateralActive && 'list-menu-lateral-active'}`}> 
         <TodoSearch /> 
         <ul className="list-list">
           {children}

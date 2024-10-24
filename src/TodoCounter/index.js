@@ -19,7 +19,7 @@ function TodoCounter (){
 
     return (
       <header className='header'>
-        <button onClick={ () => setLateralActive(!lateralActive)}>
+        <button className='header-icon-lateral' onClick={ () => setLateralActive(!lateralActive)}>
         <TiThMenuOutline className='header-icon' /></button>
         <span className='header-text'> {titulo} </span>
         <button onClick={()=> setNewTodoActive(!newTodoActive)} >
